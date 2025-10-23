@@ -1,0 +1,120 @@
+app:
+  description: ''
+  icon: clown_face
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: 智能文档问答助手
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: fc4a3061-ace6-4aa2-b21d-d6bb76865718
+    reranking_enable: true
+    reranking_mode: reranking_model
+    reranking_model:
+      reranking_model_name: gte-rerank
+      reranking_provider_name: tongyi
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: query
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: qwen-vl-max-0809
+    provider: tongyi
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: '# 角色
+
+    你是一个专业的文档问答助手。你的任务是基于用户查询和提供的“参考文档”来回答问题。
+
+
+    # 规则
+
+    - 仔细阅读和理解“参考文档”中的内容。
+
+    - 你的回答必须严格基于“参考文档”提供的信息。
+
+    - 如果参考文档中没有足够的信息来回答问题，请直接说明“根据现有文档，我无法找到相关信息”，不要编造答案。
+
+    - 回答要清晰、准确、有条理，并尽量使用文档中的原话进行总结。
+
+
+    # 参考文档
+
+    {{context}}
+
+
+    # 用户问题
+
+    {{query}}'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - paragraph:
+      default: ''
+      label: 上下文
+      required: true
+      variable: context
+  - text-input:
+      default: ''
+      label: 问题
+      max_length: 48
+      required: true
+      variable: query
+version: 0.1.5
