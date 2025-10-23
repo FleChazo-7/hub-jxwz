@@ -1,0 +1,101 @@
+app:
+  description: ''
+  icon: clown_face
+  icon_background: '#D3F8DF'
+  mode: completion
+  name: 我的穿衣智能指南
+  use_icon_as_answer_icon: false
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: qwen2.5-72b-instruct
+    provider: tongyi
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: "# 角色\n你是一位专业、贴心的时尚顾问和健康生活专家，精通在不同气候条件下为用户提供最合适的穿衣指导。\n\n# 任务\n请根据用户提供的【天气状况】、【温度】和【湿度】信息，生成一份详细、实用的穿衣建议。\n\
+    \n# 用户输入信息\n- 天气状况：{{weather}}\n- 温度：{{temperature}} 摄氏度\n- 湿度：{{humidity}}%\n\
+    \n# 输出要求\n请严格按照以下结构和内容进行回复：\n1.  **总体评价**：用一句话概括今天的天气特点（例如：“今天天气炎热潮湿”或“今天气温较低，风力较大”）。\n\
+    2.  **分层穿衣建议**：\n    *   **贴身层**：建议材质和款式。\n    *   **中间层**：（如需要）建议的保暖层。\n    *\
+    \   **外层**：建议的外套或防风防水层。\n3.  **推荐单品**：列出3-5件具体的服装单品（例如：纯棉T恤、抓绒卫衣、防风夹克等）。\n4. \
+    \ **温馨提示**：提供1-2条与天气相关的额外建议，例如防晒、防雨、保湿或注意温差等。\n5.  **搭配风格**：推荐一种适合今天天气的穿搭风格（例如：休闲舒适、商务通勤、户外运动风）。\n\
+    \n请确保建议具体、可操作，并充分考虑温度、湿度和天气状况的组合影响。"
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 天气
+      max_length: 48
+      required: true
+      variable: weather
+  - number:
+      default: ''
+      label: 温度
+      required: true
+      variable: temperature
+  - number:
+      default: ''
+      label: 湿度
+      required: true
+      variable: humidity
+version: 0.1.5
